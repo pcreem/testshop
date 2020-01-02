@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>{{product.name}}</h1>
+
+  </div>
+  <div class="col-md-4">
+    <img class="img-responsive center-block" src="{{product.image}}" style="width: 250px;margin-bottom: 25px;">
+    {{!-- <div class="well">
+      <ul class="list-unstyled">
+        <li><strong>Price:</strong> {{product.price}}</li>
+      </ul>
+    </div> --}}
+  </div>
+  <div class="well col-md-8">
+    <p>{{product.description}}</p>
+    <p>{{product.Population.population}}</p>
+    <p>{{product.Category.name}}</p>
+    <p><strong>Price:</strong> {{product.price}}</p>
+    <a href="javascript:history.back()">Back</a>
+  </div>
+  <hr>
+</div>

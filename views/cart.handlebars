@@ -1,0 +1,84 @@
+<div class="row no-gutters" style="max-width: 540px;">
+  <div class="col-md-4">
+    <h4>#</h4>
+  </div>
+  <div class="col-md-8">
+    <h4 style="margin: 0 10px;">detail</h4>
+  </div>
+</div>
+<br>
+{{#each cart.items}}
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{this.image}}" class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{this.name}}</h5>
+        <p class="card-text">
+
+          <div style="display: flex;">
+            <p style="margin: 0 20px 0 0;">$ {{this.price}}</p>
+            <form action="/cartItem/{{this.CartItem.id}}/add" method="POST">
+              <button type="submit" class="btn btn-lg btn-outline-secondary">
+                <i class="fas fa-plus"></i>
+              </button>
+            </form>
+            <p style="margin: 0 20px;">
+              {{this.CartItem.quantity}}
+            </p>
+            <form action="/cartItem/{{this.CartItem.id}}/sub" method="POST">
+              <button type="submit" class="btn btn-lg btn-outline-secondary"><i class="fas fa-minus"></i></button>
+            </form>
+            <p> </p>
+            <form style="margin: 0 20px;" action="/cartItem/{{this.CartItem.id}}?_method=DELETE" method="POST">
+              <button type="submit" class="btn btn-lg btn-link">
+                <i class="fas fa-trash"></i>
+              </button>
+            </form>
+          </div>
+
+        </p>
+        <p class="card-text">Subtotal {{#multply this.price this.CartItem.quantity}} {{/multply}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}
+<br>
+<div class="row no-gutters" style="max-width: 540px;">
+  <div class="col-md-4">
+
+  </div>
+  <div class="col-md-8" style="display: flex;">
+    <h5 style="margin: 0 10px;">Total: </h5>
+    <br>
+    <h5> {{totalPrice}}</h5>
+  </div>
+</div>
+
+
+
+<form action="order" method="POST">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone">
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input type="text" class="form-control" id="address" placeholder="Enter address" name="address">
+  </div>
+  <input type="hidden" name="cartId" value="{{cart.id}}">
+  <input type="hidden" name="amount" value="{{totalPrice}}">
+  <input type="hidden" name="shipping_status" value="0">
+  <input type="hidden" name="payment_status" value="0">
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<br><br>

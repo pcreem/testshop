@@ -1,0 +1,85 @@
+<div>
+  <form action="/products/search" method="POST" class="mb-3 form-inline active-cyan-4">
+    <input id="search" name="search" class="form-control col-md-7" type="text" placeholder="Search" aria-label="Search">
+  </form>
+  <div class="row">
+
+    {{#each products}}
+    <div class="col-md-4 card-deck">
+      <div class="card mb-4 shadow-sm">
+        <img class="card-img-top img-fluid rounded" src="{{this.image}}" alt="Card image cap">
+        <div class="card-body">
+
+          <a class="card-title" href="/products/{{this.id}}">
+            {{this.name}}
+          </a>
+          <p class="card-text">{{this.Population.population}} {{this.Category.name}}</p>
+          <small class="text-muted">$ {{this.price}}</small>
+
+
+          <div class="card-footer">
+            <form action="/cart" method="POST">
+              <input type="hidden" name="productId" value="{{this.id}}">
+              <a href="#" onclick="this.parentNode.submit()">Add to Cart</a>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    {{/each}}
+
+
+  </div>
+</div>
+<br />
+<br />
+<br />
+
+{{#if populationId}}
+<nav aria-label="Page navigation example">
+  <ul class="pagination pagination-lg justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="/?page={{prev}}&populationId={{populationId}}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {{#each totalPage}}
+    {{#ifCond this ../page}}
+    <li class="page-item active"><a class="page-link" href="#">{{this}}</a></li>
+    {{else}}
+    <li class="page-item"><a class="page-link" href="/?page={{this}}&populationId={{../populationId}}">{{this}}</a></li>
+    {{/ifCond}}
+    {{/each}}
+    <li class="page-item">
+      <a class="page-link" href="/?page={{next}}&populationId={{populationId}}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+{{else}}
+<nav aria-label="Page navigation example">
+  <ul class="pagination pagination-lg justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="/?page={{prev}}&categoryId={{categoryId}}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {{#each totalPage}}
+    {{#ifCond this ../page}}
+    <li class="page-item active"><a class="page-link" href="#">{{this}}</a></li>
+    {{else}}
+    <li class="page-item"><a class="page-link" href="/?page={{this}}&categoryId={{../categoryId}}">{{this}}</a></li>
+    {{/ifCond}}
+    {{/each}}
+    <li class="page-item">
+      <a class="page-link" href="/?page={{next}}&categoryId={{categoryId}}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+{{/if}}

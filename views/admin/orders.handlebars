@@ -1,0 +1,30 @@
+<pre>
+  <table class="u-full-width">
+    <thead>
+      <tr>
+        <th>SN</th>
+        <th>shipping</th>
+        <th>payment</th>
+        <th>amount</th>
+        <th>#</th>
+        <th>#</th>
+        <th>          #</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each orders}}
+      <tr>
+        <td>{{this.sn}}</td>
+        <td>{{this.shipping_status}}</td>
+        <td>{{this.payment_status}}</td> 
+        <td>{{this.amount}}</td>
+        <td><a href="/admin/orders/{{this.id}}/detail">detail</a></td>
+        <td><a href="/admin/orders/{{this.id}}/edit">edit</a></td> 
+        <td><form action="/admin/orders/{{this.id}}?_method=DELETE" method="POST" style="display: inline; ">
+          <a href="#" onclick="this.parentNode.submit()">delete</a>
+        </form></td>    
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</pre>

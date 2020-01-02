@@ -1,0 +1,75 @@
+<h6 class="docs-header">Order Detail</h6>
+<pre>
+  <table class="u-full-width">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>name</th>
+        <th>tel</th>
+        <th>address</th>
+        <th>amount</th>
+        <th>cost</th>
+      </tr>
+    </thead>
+    <tbody>    
+      <tr>
+        <td>{{order.id}}</td>
+        <td>{{order.name}}</td>
+        <td>{{order.phone}}</td>
+        <td>{{order.address}}</td>
+        <td>{{order.amount}}</td>
+        <td>{{order.cost}}</td>     
+      </tr>
+    </tbody>
+
+    <thead>
+      <tr>
+        <th>SN</th>
+        <th>shipping</th>
+        <th>payment</th>
+        <th>userid</th>
+        <th>date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{order.sn}}</td>
+        <td>{{order.shipping_status}}</td>
+        <td>{{order.payment_status}}</td>
+        <td>{{order.UserId}}</td>
+        <td>{{order.createdAt}}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</pre>
+
+<div class="docs-section">
+  <h6 class="docs-header">Product Lists</h6>
+  <pre>
+<table class="u-full-width">
+  <thead>
+    <tr>
+      <th scope="col">Product</th>
+      <th scope="col">quantity</th>
+      <th scope="col">Subtotal</th>
+    </tr>
+  </thead>
+ 
+  <tbody>
+    {{#each order.items}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.OrderItem.quantity}}</td>
+      <td>{{this.price}}</td>
+    </tr>
+    {{/each}}
+    <tr>
+      <td>Total</td>
+      <td></td>
+      <td>{{order.amount}}</td>
+    </tr>
+  </tbody>
+ 
+</table>

@@ -1,0 +1,75 @@
+<pre>
+  <table class="u-full-width">
+    <h5>Datas</h5>
+    <thead>
+      <tr>
+        <th>orders</th>
+        <th>conclude</th>
+        <th>amount</th>
+        <th>cost</th>
+        <th>gross</th>
+        <th>profit</th>
+        <th>pct</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{backendData.total_orders}}</td>
+        <td>{{backendData.conclude_orders}}</td>
+        <td>{{backendData.total_amount}}</td>
+        <td>{{backendData.total_cost}}</td>
+        <td>{{backendData.gross}}</td>
+        <td>{{backendData.profit_margin}}%</td>
+        <td>{{backendData.per_customer_transaction}}</td>
+      </tr>
+    </tbody>
+  </table>
+</pre>
+
+<pre>
+  <table class="u-full-width">
+<h5>Product</h5>
+    <thead>
+      <tr>
+        <th>sn</th>
+        <th>id</th>
+        <th>name</th>
+        <th>price</th>
+        <th>quantity</th>
+        <th>amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each productA}}
+      <tr>
+        <td>{{this.sn}}</td>
+        <td>{{this.pid}}</td>
+        <td>{{this.pname}}</td>
+        <td>{{this.pprice}}</td>
+        <td>{{this.pquantity}}</td>
+        <td>{{this.pamount}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</pre>
+
+<pre>
+  <table class="u-full-width">
+<h5>User</h5>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each userAmounts}}
+      <tr>
+        <td>{{this.UserId}}</td>
+        <td>{{this.total_amount}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</pre>

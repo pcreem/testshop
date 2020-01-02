@@ -1,0 +1,58 @@
+<h6 class="docs-header">Farmer Detail</h6>
+<pre>
+  <table class="u-full-width">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>name</th>
+        <th>address</th>
+        <th>tel</th>
+        <th>line</th>
+      </tr>
+    </thead>
+    <tbody>    
+      <tr>
+        <td>{{farmer.id}}</td>
+        <td>{{farmer.name}}</td>
+        <td>{{farmer.address}}</td>
+        <td>{{farmer.tel}}</td> 
+        <td>{{farmer.line}}</td> 
+      </tr>
+    </tbody>
+  </table>
+</pre>
+
+<div class="docs-section">
+  <h6 class="docs-header">Products Lists</h6>
+
+<pre>
+<table class="u-full-width">
+
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>name</th>
+      <th>price</th>
+      <th>#</th>
+      <th>#</th>
+      <th>          #</th>
+    </tr>
+  </thead>
+  {{#each farmer.Products}}
+  <tbody>
+    <tr>
+      <td>{{this.id}}</td>
+      <td>{{this.name}}</td>
+      <td>{{this.price}}</td>
+      <td><a href="/admin/protducts/{{this.id}}/detail">detail</a></td>
+      <td><a href="/admin/protducts/{{this.id}}/edit">edit</a></td> 
+      <td><form action="/admin/protducts/{{this.id}}?_method=DELETE" method="POST" style="display: inline; ">
+      <a href="#" onclick="this.parentNode.submit()">delete</a>
+      </form></td>   
+    </tr>
+  </tbody>
+  {{/each}}
+</table>
+
+</pre>
+</div>

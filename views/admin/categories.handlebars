@@ -1,0 +1,40 @@
+<a class="button button-primary" href='/admin/categories'>Categories</a>
+<a class="button" href='/admin/populations'>Populations</a>
+<br /><br />
+
+{{#if category}}
+<form action="/admin/categories/{{category.id}}?_method=PUT" method="POST">
+  <input type="text" placeholder="name" name="name" value="{{category.name}}">
+  <button type="submit">Update</button>
+</form>
+{{else}}
+<form action="/admin/categories" method="POST">
+  <input type="text" placeholder="name" name="name">
+  <button type="submit">Create</button>
+</form>
+{{/if}}
+
+<pre>
+  <table class="u-full-width">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>name</th>
+        <th>#</th>
+        <th>          #</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each categories}}
+      <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.name}}</td>
+        <td><a href="/admin/categories/{{this.id}}/edit">edit</a></td> 
+        <td><form action="/admin/categories/{{this.id}}?_method=DELETE" method="POST" style="display: inline; ">
+          <a href="#" onclick="this.parentNode.submit()">delete</a>
+        </form></td>    
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</pre>

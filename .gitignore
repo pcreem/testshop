@@ -1,0 +1,7 @@
+node_modules/ 
+temp/
+
+.DS_Store
+config/config.json
+ngrok.exe
+.env

@@ -1,0 +1,68 @@
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link {{#ifCond '' categoryId}}active{{/ifCond}}" href="/admin/products/?categoryId=">全部</a>
+  </li>
+  {{#each categories}}
+  <li class="nav-item">
+    <a class="nav-link {{#ifCond this.id ../categoryId}}active{{/ifCond}}"
+      href="/admin/products/?categoryId={{this.id}}">{{this.name}}</a>
+  </li>
+  {{/each}}
+</ul>
+<br />
+
+<pre>
+  <table class="u-full-width">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>name</th>
+        <th>price</th>
+        <th>#</th>
+        <th>#</th>
+        <th>          #</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each products}}
+      <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.name}}</td>
+        <td>{{this.price}}</td> 
+        <td><a href="/admin/products/{{this.id}}/detail">detail</a></td>
+        <td><a href="/admin/products/{{this.id}}/edit">edit</a></td> 
+        <td><form action="/admin/products/{{this.id}}?_method=DELETE" method="POST" style="display: inline; ">
+          <a href="#" onclick="this.parentNode.submit()">delete</a>
+        </form></td>    
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</pre>
+
+<br />
+<br />
+<br />
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="/admin/products/?page={{prev}}&categoryId={{categoryId}}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {{#each totalPage}}
+    {{#ifCond this ../page}}
+    <li class="page-item active"><a class="page-link" href="#">{{this}}</a></li>
+    {{else}}
+    <li class="page-item">
+    <a class="page-link"href="/admin/products/?page={{this}}&categoryId={{../categoryId}}">{{this}}</a></li>
+    {{/ifCond}}
+    {{/each}}
+    <li class="page-item">
+    <a class="page-link" href="/admin/products/?page={{next}}&categoryId={{categoryId}}" aria-label="Next">
+      <span aria-hidden="true">&raquo;</span>
+    </a>
+    </li>
+  </ul>
+</nav>

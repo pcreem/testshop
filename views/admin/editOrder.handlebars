@@ -1,0 +1,44 @@
+<form action="/admin/orders/{{order.id}}?_method=PUT" method="POST">
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" value="{{order.name}}">
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Tel</label>
+    <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter phone" value="{{order.phone}}">
+  </div>
+
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input type="text" class="form-control" name="address" id="address" placeholder="Enter address"
+      value="{{order.address}}">
+  </div>
+
+  <div class="form-group">
+    <label for="UserId">UserId</label>
+    <input type="text" class="form-control" name="UserId" id="UserId" placeholder="Enter UserId"
+      value="{{order.UserId}}">
+  </div>
+
+  <div class="form-group">
+    <label for="shipping_status">shipping_status</label>
+    <input type="text" class="form-control" name="shipping_status" id="shipping_status"
+      placeholder="Enter shipping_status" value="{{order.shipping_status}}">
+  </div>
+
+  <div class="form-group">
+    <label for="payment_status">payment_status</label>
+    <input type="text" class="form-control" name="payment_status" id="payment_status" placeholder="Enter payment_status"
+      value="{{order.payment_status}}">
+  </div>
+
+  <div class="form-group">
+    <label for="sn">SN</label>
+    <input type="text" class="form-control" name="sn" id="sn" placeholder="Enter sn" value="{{order.sn}}">
+  </div>
+
+  <button type="submit" class="button-primary">Submit</button>
+</form>
+</div>

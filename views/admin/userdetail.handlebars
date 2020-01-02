@@ -1,0 +1,85 @@
+
+<h6 class="docs-header">User Detail</h6>
+<pre>
+  <table class="u-full-width">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>name</th>
+        <th>email</th>
+        <th>address</th>
+        <th>tel</th>
+        <th>role</th>
+      </tr>
+    </thead>
+    <tbody>    
+      <tr>
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.address}}</td>
+        <td>{{user.tel}}</td>
+        <td>{{user.role}}</td>     
+      </tr>
+    </tbody>
+  </table>
+</pre>
+
+
+<h6 class="docs-header">Order Lists</h6>
+{{#each user.Orders}}
+<div class="docs-section">
+<pre>
+<table class="u-full-width">
+  <thead>
+    <tr>
+      <th>SN</th>
+      <th>name</th>
+      <th>address</th>
+      <th>tel</th>
+      <th>shipping</th>
+      <th>payment</th>
+    </tr>
+  </thead>
+ 
+  <tbody>
+    <tr>
+      <td>{{this.sn}}</td>
+      <td>{{this.name}}</td>
+      <td>{{this.address}}</td>
+      <td>{{this.phone}}</td>
+      <td>{{this.shipping_status}}</td>
+      <td>{{this.payment_status}}</td>
+    </tr>
+  </tbody>
+ 
+</table>
+
+<table class="col-sm">
+      <thead>
+        <tr>
+          <th scope="col">Product</th>
+          <th scope="col">quantity</th>
+          <th scope="col">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.items}}
+        <tr>
+          <td>{{this.name}}</td>
+          <td>{{this.OrderItem.quantity}}</td>
+          <td>{{this.price}}</td>
+        </tr>
+        {{/each}}
+        <tr>
+          <td>Total</td>
+          <td></td>
+          <td>{{this.amount}}</td>
+        </tr>
+      </tbody>
+</table>
+
+</pre>
+
+</div>
+  {{/each}}

@@ -1,0 +1,29 @@
+
+<pre>
+  <table class="u-full-width">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>name</th>
+        <th>line</th>
+        <th>#</th>
+        <th>#</th>
+        <th>          #</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each farmers}}
+      <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.name}}</td>
+        <td>{{this.line}}</td> 
+        <td><a href="/admin/farmers/{{this.id}}/detail">detail</a></td>
+        <td><a href="/admin/farmers/{{this.id}}/edit">edit</a></td> 
+        <td><form action="/admin/farmers/{{this.id}}?_method=DELETE" method="POST" style="display: inline; ">
+          <a href="#" onclick="this.parentNode.submit()">delete</a>
+        </form></td>    
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</pre>

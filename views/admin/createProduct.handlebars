@@ -1,0 +1,73 @@
+{{#if product}}
+<form action="/admin/products/{{product.id}}?_method=PUT" method="POST" enctype="multipart/form-data">
+  {{else}}
+  <form action="/admin/products" method="POST" enctype="multipart/form-data">
+    {{/if}}
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" value="{{product.name}}">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" class="form-control" name="description" id="description" placeholder="Enter description"
+        value="{{product.description}}">
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" class="form-control" name="price" id="price" placeholder="Enter price"
+        value="{{product.price}}">
+    </div>
+
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input type="file" class="form-control" name="image" id="image" placeholder="Enter image"
+        value="{{product.image}}">
+    </div>
+
+    <div class="form-group">
+      <label for="CategoryId">Category</label>
+      <select class="form-control" id="CategoryId" name="CategoryId">
+        {{#if product}}
+        <option value="{{product.CategoryId}}" selected disabled>{{product.Category.name}}</option>
+        {{else}}
+          <option value="" selected disabled>--please select--</option>
+          {{#each categories}}
+          <option value="{{this.id}}">{{this.name}}</option>
+          {{/each}}
+        {{/if}}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="PopulationId">Population</label>
+      <select class="form-control" id="PopulationId" name="PopulationId">
+      {{#if product}}
+        <option value="{{product.PopulationId}}" selected disabled>{{product.Population.name}}</option>
+        {{else}}
+        <option value="" selected disabled>--please select--</option>
+        {{#each populations}}
+        <option value="{{this.id}}">{{this.population}}</option>
+        {{/each}}
+      {{/if}}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="FarmerId">Farmer</label>
+      <select class="form-control" id="FarmerId" name="FarmerId">
+       {{#if product}}
+        <option value="{{product.FarmerId}}" selected disabled>{{product.Farmer.name}}</option>
+        {{else}}
+        <option value="" selected disabled>--please select--</option>
+        {{#each farmers}}
+        <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+      {{/if}} 
+      </select>
+    </div>
+
+    <button type="submit" class="button-primary">Submit</button>
+  </form>
+  </div>
